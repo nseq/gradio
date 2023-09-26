@@ -234,13 +234,6 @@ def colab_check() -> bool:
         pass
     return is_colab
 
-
-def kaggle_check() -> bool:
-    return bool(
-        os.environ.get("KAGGLE_KERNEL_RUN_TYPE") or os.environ.get("GFOOTBALL_DATA_DIR")
-    )
-
-
 def sagemaker_check() -> bool:
     try:
         import boto3  # type: ignore
