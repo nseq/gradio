@@ -204,7 +204,6 @@ def launched_analytics(blocks: gradio.Blocks, data: dict[str, Any]) -> None:
         ]
     additional_data = {
         "version": get_package_version(),
-        "is_kaggle": blocks.is_kaggle,
         "is_sagemaker": blocks.is_sagemaker,
         "using_auth": blocks.auth is not None,
         "dev_mode": blocks.dev_mode,
