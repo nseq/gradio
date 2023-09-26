@@ -26,7 +26,6 @@ from gradio.utils import (
     ipython_check,
     is_in_or_equal,
     is_special_typed_parameter,
-    kaggle_check,
     readme_to_html,
     sagemaker_check,
     sanitize_list_for_csv,
@@ -77,31 +76,6 @@ class TestUtils:
             }
         )
         assert sagemaker_check()
-
-    def test_kaggle_check_false(self):
-        assert not kaggle_check()
-
-    def test_kaggle_check_true_when_run_type_set(self):
-        with mock.patch.dict(
-            os.environ, {"KAGGLE_KERNEL_RUN_TYPE": "Interactive"}, clear=True
-        ):
-            assert kaggle_check()
-
-    def test_kaggle_check_true_when_both_set(self):
-        with mock.patch.dict(
-            os.environ,
-            {"KAGGLE_KERNEL_RUN_TYPE": "Interactive", "GFOOTBALL_DATA_DIR": "./"},
-            clear=True,
-        ):
-            assert kaggle_check()
-
-    def test_kaggle_check_false_when_neither_set(self):
-        with mock.patch.dict(
-            os.environ,
-            {"KAGGLE_KERNEL_RUN_TYPE": "", "GFOOTBALL_DATA_DIR": ""},
-            clear=True,
-        ):
-            assert not kaggle_check()
 
 
 def test_assert_configs_are_equivalent():
