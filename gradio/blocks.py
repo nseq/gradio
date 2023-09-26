@@ -2039,7 +2039,6 @@ Received outputs:
             self.server = server
             self.is_running = True
             self.is_colab = utils.colab_check()
-            self.is_kaggle = utils.kaggle_check()
 
             self.protocol = (
                 "https"
@@ -2071,12 +2070,6 @@ Received outputs:
                 if not quiet:
                     print(
                         "Setting queue=True in a Colab notebook requires sharing enabled. Setting `share=True` (you can turn this off by setting `share=False` in `launch()` explicitly).\n"
-                    )
-                self.share = True
-            elif self.is_kaggle:
-                if not quiet:
-                    print(
-                        "Kaggle notebooks require sharing enabled. Setting `share=True` (you can turn this off by setting `share=False` in `launch()` explicitly).\n"
                     )
                 self.share = True
             elif self.is_sagemaker:
